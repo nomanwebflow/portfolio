@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const navTrigger = document.querySelector("[data-nav-open]");
+  if (!navTrigger) return;
+
+  navTrigger.addEventListener("click", () => {
+    document.body.classList.toggle("nav-open");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
   const items = document.querySelectorAll(".intro_work_item");
   const container = document.querySelector(".intro_work_wrap");
   const tilt = -4; // degrees
