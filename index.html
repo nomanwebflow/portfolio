@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corner Cut Demo</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f3f3f3;
+      font-family: sans-serif;
+    }
+
+    .card {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    /* Include your CSS */
+    @media (min-width: 992px) {
+      /*TRANSITIONS*/
+      [gft-corner-cut=""], [gft-corner-cut="target"] { 
+        transition: clip-path 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      }
+      [gft-corner-arrow] { 
+        transition: transform 0.65s cubic-bezier(0.215, 0.610, 0.355, 1.000), opacity 0.55s linear;
+      }
+      [gft-success-badge] { 
+        transition: opacity 0.25s linear;
+      }
+
+      [gft-corner-arrow] {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        transform: translate(-100%, 100%);
+        opacity: 0;
+        font-size: 20px;
+      }
+
+      [gft-corner-cut="trigger"]:hover [gft-corner-arrow] {
+        transform: translate(-2%, 2%);
+        opacity: 1;
+      }
+
+      [gft-corner-cut=""],
+      [gft-corner-cut="target"] {
+        width: 100%;
+        height: 100%;
+        display: block;
+        clip-path: polygon(
+          0% 0%, calc(100% - 0rem) 0%, calc(100% - 0rem) 0%,
+          calc(100% - 0rem) 0%, calc(100% - 0rem) 0%, calc(100% - 0rem) 0%,
+          calc(100% - 0rem) 0%, calc(100% - 0rem) 0%, calc(100% - 0rem) 0%,
+          calc(100% - 0rem) 0%, 100% 0rem, 100% 100%, 0% 100%
+        );
+        background: #4a90e2;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      [gft-corner-cut=""]:hover,
+      [gft-corner-cut="trigger"]:hover [gft-corner-cut="target"] {
+        clip-path: polygon(
+          0% 0%,
+          calc(100% - 3.5rem) 0%,
+          calc(100% - 3.317rem) 0.005rem,
+          calc(100% - 3.134rem) 0.020rem,
+          calc(100% - 2.953rem) 0.044rem,
+          calc(100% - 2.772rem) 0.077rem,
+          calc(100% - 2.595rem) 0.119rem,
+          calc(100% - 0.119rem) 2.595rem,
+          calc(100% - 0.076rem) 2.772rem,
+          calc(100% - 0.044rem) 2.952rem,
+          calc(100% - 0.020rem) 3.134rem,
+          calc(100% - 0.005rem) 3.317rem,
+          100% 3.5rem,
+          100% 100%,
+          0% 100%
+        );
+      }
+
+      [gft-corner-cut="trigger"]:hover [gft-success-badge] {
+        opacity: 0;
+      }
+
+      [gft-success-badge] {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: #27ae60;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" gft-corner-cut="trigger">
+    <div gft-corner-cut="target">
+      Hover me
+    </div>
+    <div gft-corner-arrow>➜</div>
+    <div gft-success-badge>Live</div>
+  </div>
+</body>
+</html>
