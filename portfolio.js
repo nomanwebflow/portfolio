@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll(".intro_work_item");
-  const container = document.querySelector(".intro_work_wrap");
+  const items = document.querySelectorAll(".page_intro_slide");
+  const container = document.querySelector(".page_intro_slider");
   const tilt = -4; // degrees
   const offset = 0; // px
   let parentRotation = 0;
